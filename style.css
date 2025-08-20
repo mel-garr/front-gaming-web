@@ -96,7 +96,8 @@ html, body{
 
 
 footer{
-    position: relative;
+    /* position: relative; */
+    display: block;
     bottom: 0;
     left: 0;
     right: 0;
@@ -148,6 +149,7 @@ footer h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
 .page-content-1{
@@ -178,7 +180,7 @@ footer h1{
     list-style: none;
 }
 
-.page-content-1 ul li button{
+.basicbutton{
     border: none;
     padding: 10px 30px;
     border-radius: 20%;
@@ -193,5 +195,195 @@ footer h1{
 
 .neworctn{
     display: none;
+    width: 90%;
+    height: 60%;
+    background-color: rgba(64, 69, 82, 0.7);
+}
+
+.neworctn2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 60px;
+}
+
+.pickchar{
+    position: relative;
+    width: 90%;
+    height:80%;
+    background-color: rgba(64, 69, 82, 0.7);
+    padding :20px;
+    display: none;
+}
+
+.pickchar div h2{
+    font-weight: 900;
+    font-size: 30px;
+    /* text-align: center; */
+    text-transform: uppercase;
+    background: linear-gradient(to right,#4acfee, #53f8c9, #02d79a, #6070fd, #2a46ff, #0099ff, #4acfee);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 2.5s linear infinite;
+}
+
+@keyframes animate-gradient{
+    to{
+        background-position: 200%;
+    }
+}
+
+.pickchar div h3{
+    padding: 10px 0px;
+}
+
+.pickchar .characters{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+
+}
+
+.pickchar img{
+    position: relative;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+}
+
+.buttonss{
+    background-color: #d2d2d2;
+    width: 100px;
+    height: 50px;
+    border-radius: 200px;
+    cursor: pointer;
+}
+
+.butoncheck{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px 400px;
+    transition: 0.2s;
+}
+
+.buttonss::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 200px;
+    margin: 2px;
+    margin-left: 5px;
+    transition: 0.2s;
+}
+
+input:checked + .buttonss{
+    background-color: #000;
+}
+
+input:checked + .buttonss::before{
+    transform: translate(50px);
+    background-color: #fff;
+}
+
+.iinnpput{
+    display: none;
+}
+
+.option1{
+    display: flex;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.option1 button{
+    height: 30px;
+}
+
+.papergame{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-color: red;
+    display: none;
+    position: relative;
+    align-items: center;
+}
+
+.papergame2{
+    width: 90%;
+    height: 80%;
+    justify-content: center;
+    background-color: red;
+    display: flex;
+}
+
+.player-side{
+    flex-basis: 44%;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: white;
+}
+
+
+
+.ia-side {
+    background-color: white;
+    color:black;
+    flex-basis: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.player-side img{
+    width: 60px;
+    height: 60px;
+}
+
+
+.moves{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ia-side img,
+.player-side .pro{
+    width: 120px;
+    height: 120px;
+    
+    padding-top: -200px;
+}
+
+.ia-side img{
+    margin-top: 40px;
+}
+
+.ia-side p{
+    margin-top: 20px;
+}
+
+.fight_button{
+    border: 2px solid black;
 }
 

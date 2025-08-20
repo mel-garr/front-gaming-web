@@ -34,3 +34,6 @@ function init_in_session(){
     sessionStorage.setItem("playerscore", 0);
     sessionStorage.setItem("computerscore", 0);
 }
+
+let playpaperbutton = document.querySelector(".gogame")
+playpaperbutton.

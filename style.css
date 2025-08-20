@@ -318,18 +318,18 @@ input:checked + .buttonss::before{
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: red;
     display: none;
-    position: relative;
+
     align-items: center;
 }
 
 .papergame2{
     width: 90%;
     height: 80%;
-    justify-content: center;
-    background-color: red;
+    justify-content: space-between;
     display: flex;
+    margin: auto;
+    background-color: rgba(64, 69, 82, 0.7);
 }
 
 .player-side{

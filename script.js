@@ -60,16 +60,13 @@ go_back2.addEventListener('click', function(){
     handle_movement_between_scenes(pickchar, neworctn);
 });
 
-go.addEventListener('click', function(){
-    handle_movement_between_scenes(pickchar, papergame);
-});
 
 playpaperbutton.addEventListener('click', function(){
     handle_movement_between_scenes(maindiv, neworctn);
 });
 
 go_back.addEventListener('click', function(){
-     handle_movement_between_scenes(neworctn, maindiv)
+    handle_movement_between_scenes(neworctn, maindiv)
 });
 
 newgameb.addEventListener('click', function(){
@@ -77,24 +74,32 @@ newgameb.addEventListener('click', function(){
 });
 
 function handle_movement_between_scenes(newc, oldc){
-    console.log('ja hnaya')
     newc.style.display = "none";
     oldc.style.display = "block";
 }
 
 
+function handle_movement_between_scenesf(newc, oldc){
+    newc.style.display = "none";
+    oldc.style.display = "flex";
+}
+
+
 // pick profile
+let selectedChar = null ;
 const heroname = document.querySelector(".heroname");
 const picked_hero = document.querySelectorAll(".characters img");
 let selected = picked_hero[0];
 selected.classList.add("selected");
 heroname.textContent = selected.dataset.name;
+selectedChar = selected.dataset.name;
 picked_hero.forEach(img => {
     img.addEventListener("click", ()=> {
         selected.classList.remove("selected");
         selected = img;
         selected.classList.add("selected");
         heroname.textContent = img.dataset.name;
+        selectedChar = img.dataset.name;
     });
 });
 
@@ -102,17 +107,8 @@ const putinput = document.querySelector(".putinput");
 const checkbox = document.querySelector(".iinnpput");
 putinput.textContent = checkbox.checked ? "Session" : "Local";
 
-checvement_between_scenes(maindiv, neworctn);kbox.addEventListener("change", () => {
-    if (checkbox.checked){
-        putinput.textContent = "Session";
-    }
-    else{
-        putinput.textContent = "Local";
-    }
-});
 
 
-// go to lanch the game -> khassni n initi lhza9 kamel 9bel manmchi liha
 
 //js of the page of the game
 const p_move = document.querySelector(".moves_pick");
@@ -122,9 +118,24 @@ melected.classList.add("selected");
 p_move.textContent = melected.dataset.name;
 picked_move.forEach(img => {
     img.addEventListener("click", ()=> {
+        console.log('ja hnaya')
         melected.classList.remove("selected");
         melected = img;
         melected.classList.add("selected");
         p_move.textContent = img.dataset.name;
     });
 });
+go.addEventListener('click', function(){
+    handle_movement_between_scenesf(pickchar, papergame);
+    localStorage.setItem('profile', selectedChar);
+    document.querySelector('.pro').src = `img/${selectedChar.toLowerCase()}.jpg`;
+    // console.log(`img/${profilePick.toLowerCase()}.jpg`);
+});
+// the actual game
+
+//if a score hit 5 do that
+let humanscore = 0;
+let iascore = 0;
+const humanscorep = document.querySelector(".playerscore");
+const iascorep = document.querySelector(".compscore");
+

@@ -116,6 +116,7 @@ const picked_move = document.querySelectorAll(".moves img");
 let melected = picked_move[0];
 melected.classList.add("selected");
 p_move.textContent = melected.dataset.name;
+console.log(p_move.textContent);
 picked_move.forEach(img => {
     img.addEventListener("click", ()=> {
         console.log('ja hnaya')
@@ -138,4 +139,72 @@ let humanscore = 0;
 let iascore = 0;
 const humanscorep = document.querySelector(".playerscore");
 const iascorep = document.querySelector(".compscore");
+const iachat = document.querySelector(".iachat");
+updatescore();
 
+function updatescore(){
+    humanscorep.textContent = "Player Score is " + humanscore;
+    iascorep.textContent = "Evil IA Score is " + iascore;
+}
+
+function getComputerChoice(){
+    const choices = ['fire' , 'earth', 'wind'];
+    let randomCoice = Math.floor(Math.random() * choices.length);
+    return choices[randomCoice];
+}
+
+function updatescore2(num, RoundNum){
+    if (num === 1){
+        iascore += 1;
+        humanscore += 1;
+        updatescore();
+    }
+    else if (num === 2){
+        humanscore += 1;
+        updatescore();
+    }
+    else if (num === 3){
+        iascore += 1;
+        updatescore();
+    }
+    else
+        updatescore();
+}
+
+
+function getHumanChoice(){
+    return p_move.textContent.trim().toLowerCase();
+}
+
+function Playgame(){
+    let RoundNum = 0;
+    humanscore = 0;
+    iascore = 0;
+    while (RoundNum < 5){
+        playRound(RoundNum);
+        RoundNum += 1;
+    }
+    updatescore2(4);
+}
+
+function playRound(RoundNum){
+    let fight = document.querySelector(".fight_button");
+    fight.addEventListener("click", function(){
+        const hhumanchoice = getHumanChoice();
+        const iiachoice = getComputerChoice();
+        if (hhumanchoice === iiachoice){
+            updatescore2(1, RoundNum);
+        }
+        else if ((hhumanchoice === 'wind' && iiachoice === 'earth')
+            || (hhumanchoice === 'earth' && iiachoice === 'fire')
+            || (hhumanchoice === 'fire' && iiachoice === 'wind')){
+                updatescore2(2, RoundNum);
+            }
+        else{
+
+            updatescore2(3, RoundNum);
+        }
+    })
+}
+
+Playgame();
